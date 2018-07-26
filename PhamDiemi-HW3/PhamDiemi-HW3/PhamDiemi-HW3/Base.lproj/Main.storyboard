@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1JB-Sy-fdE">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" userLabel="Main View Controller" customClass="ViewController" customModule="PhamDiemi_HW3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YW6-3C-G6g" userLabel="buttonUserName">
+                                <rect key="frame" x="149" y="274" width="77" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" adjustable="YES"/>
+                                </accessibility>
+                                <state key="normal" title="User Name">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="rvm-6E-gMW" kind="show" id="mbu-Fg-JhK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FTy-RV-gWA" userLabel="buttonGender">
+                                <rect key="frame" x="149" y="363" width="77" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Gender">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="u6r-HD-LNe" kind="show" id="c3f-oh-0mp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="FTy-RV-gWA" firstAttribute="top" secondItem="YW6-3C-G6g" secondAttribute="bottom" constant="59" id="6pF-7C-viK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YW6-3C-G6g" secondAttribute="trailing" constant="149" id="B8P-yY-XNE"/>
+                            <constraint firstItem="YW6-3C-G6g" firstAttribute="leading" secondItem="FTy-RV-gWA" secondAttribute="leading" id="Yjl-7z-Nou"/>
+                            <constraint firstItem="YW6-3C-G6g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="210" id="nci-n5-AU5"/>
+                            <constraint firstItem="YW6-3C-G6g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="149" id="oJi-UF-sXs"/>
+                            <constraint firstItem="YW6-3C-G6g" firstAttribute="trailing" secondItem="FTy-RV-gWA" secondAttribute="trailing" id="odv-Ma-aPG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yff-IW-de6"/>
+                    <connections>
+                        <outlet property="buttonGender" destination="FTy-RV-gWA" id="6k4-Pk-9h6"/>
+                        <outlet property="buttonUsername" destination="YW6-3C-G6g" id="XlW-4z-fGv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968.79999999999995" y="79.610194902548727"/>
+        </scene>
+        <!--Username View Controller-->
+        <scene sceneID="ZXb-05-5Lh">
+            <objects>
+                <viewController storyboardIdentifier="UsernameViewController" id="rvm-6E-gMW" userLabel="Username View Controller" customClass="UsernameViewController" customModule="PhamDiemi_HW3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HaO-6B-E1d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-JA-Dxd" userLabel="buttonSave">
+                                <rect key="frame" x="137" y="403" width="100" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonSavePressed:" destination="rvm-6E-gMW" eventType="touchUpInside" id="Ydu-GE-yiX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gcn-bq-W5a" userLabel="labelUsername">
+                                <rect key="frame" x="144" y="207" width="86" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HT2-40-Uga" userLabel="textFieldUsername">
+                                <rect key="frame" x="16" y="283" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Jtv-LX-0gD"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonSave" destination="mIr-JA-Dxd" id="1Iu-pD-D6a"/>
+                        <outlet property="labelUsername" destination="Gcn-bq-W5a" id="dQt-7p-F9H"/>
+                        <outlet property="textFieldUsername" destination="HT2-40-Uga" id="L6g-1C-FsE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zhl-5f-xJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1720.8" y="79.610194902548727"/>
+        </scene>
+        <!--Gender View Controller-->
+        <scene sceneID="RH3-cg-zom">
+            <objects>
+                <viewController storyboardIdentifier="GenderViewController" id="u6r-HD-LNe" userLabel="Gender View Controller" customClass="GenderViewController" customModule="PhamDiemi_HW3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jLX-dr-7ju">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLK-ib-uje" userLabel="buttonMale">
+                                <rect key="frame" x="135" y="274" width="104" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Male">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonMalepressed:" destination="u6r-HD-LNe" eventType="touchUpInside" id="0Al-R3-1HB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-ds-0A3" userLabel="buttonFemale">
+                                <rect key="frame" x="135" y="363" width="104" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.94157894960765853" green="0.68130907762995863" blue="0.96930998563766479" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Female">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonFemalePressed:" destination="u6r-HD-LNe" eventType="touchUpInside" id="gmT-no-tZ7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cGq-Jb-dvU"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonFemale" destination="nsn-ds-0A3" id="5pr-a9-gNj"/>
+                        <outlet property="buttonMale" destination="fLK-ib-uje" id="9xc-CZ-05k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wI8-i6-hIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2461.5999999999999" y="79.610194902548727"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Oat-Oq-QQR">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1JB-Sy-fdE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6yy-AR-YCx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="N0N-P1-zsi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DRf-W9-xBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="270" y="80"/>
+        </scene>
+    </scenes>
+</document>

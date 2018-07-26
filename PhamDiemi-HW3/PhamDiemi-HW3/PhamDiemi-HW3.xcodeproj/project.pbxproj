@@ -1,0 +1,591 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C988D8FB2109140900B17251 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988D8FA2109140900B17251 /* UsernameViewController.swift */; };
+		C988D8FD2109144000B17251 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C988D8FC2109144000B17251 /* GenderViewController.swift */; };
+		C9A3875E210792CE00B4B948 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3875D210792CE00B4B948 /* AppDelegate.swift */; };
+		C9A38760210792CE00B4B948 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3875F210792CE00B4B948 /* ViewController.swift */; };
+		C9A38763210792CE00B4B948 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A38761210792CE00B4B948 /* Main.storyboard */; };
+		C9A38765210792CF00B4B948 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A38764210792CF00B4B948 /* Assets.xcassets */; };
+		C9A38768210792CF00B4B948 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A38766210792CF00B4B948 /* LaunchScreen.storyboard */; };
+		C9A38773210792CF00B4B948 /* PhamDiemi_HW3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A38772210792CF00B4B948 /* PhamDiemi_HW3Tests.swift */; };
+		C9A3877E210792CF00B4B948 /* PhamDiemi_HW3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A3877D210792CF00B4B948 /* PhamDiemi_HW3UITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C9A3876F210792CF00B4B948 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9A38752210792CE00B4B948 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9A38759210792CE00B4B948;
+			remoteInfo = "PhamDiemi-HW3";
+		};
+		C9A3877A210792CF00B4B948 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9A38752210792CE00B4B948 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9A38759210792CE00B4B948;
+			remoteInfo = "PhamDiemi-HW3";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C988D8FA2109140900B17251 /* UsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
+		C988D8FC2109144000B17251 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
+		C9A3875A210792CE00B4B948 /* PhamDiemi-HW3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhamDiemi-HW3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A3875D210792CE00B4B948 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C9A3875F210792CE00B4B948 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C9A38762210792CE00B4B948 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C9A38764210792CF00B4B948 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C9A38767210792CF00B4B948 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C9A38769210792CF00B4B948 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9A3876E210792CF00B4B948 /* PhamDiemi-HW3Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PhamDiemi-HW3Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A38772210792CF00B4B948 /* PhamDiemi_HW3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhamDiemi_HW3Tests.swift; sourceTree = "<group>"; };
+		C9A38774210792CF00B4B948 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9A38779210792CF00B4B948 /* PhamDiemi-HW3UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PhamDiemi-HW3UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A3877D210792CF00B4B948 /* PhamDiemi_HW3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhamDiemi_HW3UITests.swift; sourceTree = "<group>"; };
+		C9A3877F210792CF00B4B948 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C9A38757210792CE00B4B948 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A3876B210792CF00B4B948 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A38776210792CF00B4B948 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C9A38751210792CE00B4B948 = {
+			isa = PBXGroup;
+			children = (
+				C9A3875C210792CE00B4B948 /* PhamDiemi-HW3 */,
+				C9A38771210792CF00B4B948 /* PhamDiemi-HW3Tests */,
+				C9A3877C210792CF00B4B948 /* PhamDiemi-HW3UITests */,
+				C9A3875B210792CE00B4B948 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C9A3875B210792CE00B4B948 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C9A3875A210792CE00B4B948 /* PhamDiemi-HW3.app */,
+				C9A3876E210792CF00B4B948 /* PhamDiemi-HW3Tests.xctest */,
+				C9A38779210792CF00B4B948 /* PhamDiemi-HW3UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C9A3875C210792CE00B4B948 /* PhamDiemi-HW3 */ = {
+			isa = PBXGroup;
+			children = (
+				C9A3875D210792CE00B4B948 /* AppDelegate.swift */,
+				C9A3875F210792CE00B4B948 /* ViewController.swift */,
+				C9A38761210792CE00B4B948 /* Main.storyboard */,
+				C988D8FA2109140900B17251 /* UsernameViewController.swift */,
+				C988D8FC2109144000B17251 /* GenderViewController.swift */,
+				C9A38764210792CF00B4B948 /* Assets.xcassets */,
+				C9A38766210792CF00B4B948 /* LaunchScreen.storyboard */,
+				C9A38769210792CF00B4B948 /* Info.plist */,
+			);
+			path = "PhamDiemi-HW3";
+			sourceTree = "<group>";
+		};
+		C9A38771210792CF00B4B948 /* PhamDiemi-HW3Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C9A38772210792CF00B4B948 /* PhamDiemi_HW3Tests.swift */,
+				C9A38774210792CF00B4B948 /* Info.plist */,
+			);
+			path = "PhamDiemi-HW3Tests";
+			sourceTree = "<group>";
+		};
+		C9A3877C210792CF00B4B948 /* PhamDiemi-HW3UITests */ = {
+			isa = PBXGroup;
+			children = (
+				C9A3877D210792CF00B4B948 /* PhamDiemi_HW3UITests.swift */,
+				C9A3877F210792CF00B4B948 /* Info.plist */,
+			);
+			path = "PhamDiemi-HW3UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C9A38759210792CE00B4B948 /* PhamDiemi-HW3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9A38782210792CF00B4B948 /* Build configuration list for PBXNativeTarget "PhamDiemi-HW3" */;
+			buildPhases = (
+				C9A38756210792CE00B4B948 /* Sources */,
+				C9A38757210792CE00B4B948 /* Frameworks */,
+				C9A38758210792CE00B4B948 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PhamDiemi-HW3";
+			productName = "PhamDiemi-HW3";
+			productReference = C9A3875A210792CE00B4B948 /* PhamDiemi-HW3.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C9A3876D210792CF00B4B948 /* PhamDiemi-HW3Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9A38785210792CF00B4B948 /* Build configuration list for PBXNativeTarget "PhamDiemi-HW3Tests" */;
+			buildPhases = (
+				C9A3876A210792CF00B4B948 /* Sources */,
+				C9A3876B210792CF00B4B948 /* Frameworks */,
+				C9A3876C210792CF00B4B948 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9A38770210792CF00B4B948 /* PBXTargetDependency */,
+			);
+			name = "PhamDiemi-HW3Tests";
+			productName = "PhamDiemi-HW3Tests";
+			productReference = C9A3876E210792CF00B4B948 /* PhamDiemi-HW3Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C9A38778210792CF00B4B948 /* PhamDiemi-HW3UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9A38788210792CF00B4B948 /* Build configuration list for PBXNativeTarget "PhamDiemi-HW3UITests" */;
+			buildPhases = (
+				C9A38775210792CF00B4B948 /* Sources */,
+				C9A38776210792CF00B4B948 /* Frameworks */,
+				C9A38777210792CF00B4B948 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9A3877B210792CF00B4B948 /* PBXTargetDependency */,
+			);
+			name = "PhamDiemi-HW3UITests";
+			productName = "PhamDiemi-HW3UITests";
+			productReference = C9A38779210792CF00B4B948 /* PhamDiemi-HW3UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C9A38752210792CE00B4B948 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Pham, Diemi";
+				TargetAttributes = {
+					C9A38759210792CE00B4B948 = {
+						CreatedOnToolsVersion = 9.4;
+					};
+					C9A3876D210792CF00B4B948 = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = C9A38759210792CE00B4B948;
+					};
+					C9A38778210792CF00B4B948 = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = C9A38759210792CE00B4B948;
+					};
+				};
+			};
+			buildConfigurationList = C9A38755210792CE00B4B948 /* Build configuration list for PBXProject "PhamDiemi-HW3" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C9A38751210792CE00B4B948;
+			productRefGroup = C9A3875B210792CE00B4B948 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C9A38759210792CE00B4B948 /* PhamDiemi-HW3 */,
+				C9A3876D210792CF00B4B948 /* PhamDiemi-HW3Tests */,
+				C9A38778210792CF00B4B948 /* PhamDiemi-HW3UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C9A38758210792CE00B4B948 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A38768210792CF00B4B948 /* LaunchScreen.storyboard in Resources */,
+				C9A38765210792CF00B4B948 /* Assets.xcassets in Resources */,
+				C9A38763210792CE00B4B948 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A3876C210792CF00B4B948 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A38777210792CF00B4B948 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C9A38756210792CE00B4B948 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A38760210792CE00B4B948 /* ViewController.swift in Sources */,
+				C988D8FD2109144000B17251 /* GenderViewController.swift in Sources */,
+				C988D8FB2109140900B17251 /* UsernameViewController.swift in Sources */,
+				C9A3875E210792CE00B4B948 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A3876A210792CF00B4B948 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A38773210792CF00B4B948 /* PhamDiemi_HW3Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A38775210792CF00B4B948 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A3877E210792CF00B4B948 /* PhamDiemi_HW3UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C9A38770210792CF00B4B948 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9A38759210792CE00B4B948 /* PhamDiemi-HW3 */;
+			targetProxy = C9A3876F210792CF00B4B948 /* PBXContainerItemProxy */;
+		};
+		C9A3877B210792CF00B4B948 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9A38759210792CE00B4B948 /* PhamDiemi-HW3 */;
+			targetProxy = C9A3877A210792CF00B4B948 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C9A38761210792CE00B4B948 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9A38762210792CE00B4B948 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C9A38766210792CF00B4B948 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9A38767210792CF00B4B948 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C9A38780210792CF00B4B948 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C9A38781210792CF00B4B948 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9A38783210792CF00B4B948 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PhamDiemi-HW3/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "UTCS.PhamDiemi-HW3";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C9A38784210792CF00B4B948 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PhamDiemi-HW3/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "UTCS.PhamDiemi-HW3";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C9A38786210792CF00B4B948 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PhamDiemi-HW3Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "UTCS.PhamDiemi-HW3Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhamDiemi-HW3.app/PhamDiemi-HW3";
+			};
+			name = Debug;
+		};
+		C9A38787210792CF00B4B948 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PhamDiemi-HW3Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "UTCS.PhamDiemi-HW3Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhamDiemi-HW3.app/PhamDiemi-HW3";
+			};
+			name = Release;
+		};
+		C9A38789210792CF00B4B948 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PhamDiemi-HW3UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "UTCS.PhamDiemi-HW3UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PhamDiemi-HW3";
+			};
+			name = Debug;
+		};
+		C9A3878A210792CF00B4B948 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "PhamDiemi-HW3UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "UTCS.PhamDiemi-HW3UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "PhamDiemi-HW3";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C9A38755210792CE00B4B948 /* Build configuration list for PBXProject "PhamDiemi-HW3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A38780210792CF00B4B948 /* Debug */,
+				C9A38781210792CF00B4B948 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9A38782210792CF00B4B948 /* Build configuration list for PBXNativeTarget "PhamDiemi-HW3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A38783210792CF00B4B948 /* Debug */,
+				C9A38784210792CF00B4B948 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9A38785210792CF00B4B948 /* Build configuration list for PBXNativeTarget "PhamDiemi-HW3Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A38786210792CF00B4B948 /* Debug */,
+				C9A38787210792CF00B4B948 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9A38788210792CF00B4B948 /* Build configuration list for PBXNativeTarget "PhamDiemi-HW3UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A38789210792CF00B4B948 /* Debug */,
+				C9A3878A210792CF00B4B948 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C9A38752210792CE00B4B948 /* Project object */;
+}
