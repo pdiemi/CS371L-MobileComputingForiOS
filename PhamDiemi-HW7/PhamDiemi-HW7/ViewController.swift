@@ -59,7 +59,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.timer = timers[row]
         cell.labelEvent.text = "Event\t\t" + timers[row].event
         cell.labelLocation.text = "Location\t" + timers[row].location
-        cell.labelRemainingTime.text = "Remaining time(s) " + String(timers[row].remainingTime)
+        cell.labelRemainingTime.text = "Remaining time(s)\t" + String(timers[row].remainingTime)
         return cell
     }
     
@@ -116,12 +116,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     //
-    // Initialize Timer for testing
+    // Initialize Timer array for testing
     //
     
     func timersInit() {
-        let timerInit: Timer = Timer(e: "1", l: "1", t: 13)
-        timers.append(timerInit)
+        for i in 1...4 {
+            let time: Int64 = Int64(i * 5)
+            let timerInit: Timer = Timer(e: "\(i)", l: "\(i)", t: time)
+                timers.append(timerInit)
+        }
     }
     
 }

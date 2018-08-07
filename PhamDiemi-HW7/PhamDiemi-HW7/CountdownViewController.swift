@@ -63,11 +63,11 @@ class CountdownViewController: UIViewController {
             while (!self.shouldStop && self.timer.remainingTime > 0) {
                 sleep(1)
                 self.timer.remainingTime -= 1
-                print(self.timer.remainingTime)
-            }
-            DispatchQueue.main.async {
-                // main UI thread
-                self.labelRemainingTime.text = String(self.timer.remainingTime)
+                
+                DispatchQueue.main.async {  // Update remaining time label as descreasing
+                    // main UI thread
+                    self.labelRemainingTime.text = String(self.timer.remainingTime)
+                }
             }
         }
     }
