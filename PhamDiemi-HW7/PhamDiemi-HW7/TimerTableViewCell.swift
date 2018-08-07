@@ -1,0 +1,50 @@
+//
+//  TimerTableViewCell.swift
+//  PhamDiemi-HW7
+//
+//  Created by Pham, Diemi on 8/7/18.
+//  Copyright © 2018 Pham, Diemi. All rights reserved.
+//
+
+import UIKit
+
+class Timer {
+    var event: String
+    var location: String
+    var remainingTime: Int64
+    
+    init(e: String, l: String, t: Int64) {
+        event = e
+        location = l
+        remainingTime = t
+    }
+    
+    func getRemainingTime () -> Int64 {
+        return remainingTime
+    }
+    
+    func update(t: Int64) {
+        remainingTime = t
+    }
+}
+
+class TimerTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var labelEvent: UILabel!
+    @IBOutlet weak var labelLocation: UILabel!
+    @IBOutlet weak var labelRemainingTime: UILabel!
+    
+    var timer: Timer!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}
