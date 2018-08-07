@@ -36,12 +36,13 @@ class CountdownViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if selectedRemainingTime != nil {
-            labelEvent.text = selectedEvent
-            labelLocation.text = selectedLocation
-            labelRemainingTime.text = String(selectedRemainingTime!) }
-        // Start counting down
-        startCountdown()
+            labelEvent.text = timer.event
+            labelLocation.text = timer.location
+            labelRemainingTime.text = String(timer.remainingTime)
+            
+            // Start counting down
+            startCountdown()
+        
     }
 
     
@@ -51,18 +52,24 @@ class CountdownViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        shouldStop = true
+            shouldStop = true
+            selectedRemainingTime = timer.remainingTime
+            delegate?.updateTimer(remainingTime: selectedRemainingTime!)
     }
     
     func startCountdown() {
         DispatchQueue.global(qos: .userInteractive).async {
             // background thread: counting down here
-            
+            while (!self.shouldStop && self.timer.remainingTime > 0) {
+                sleep(1)
+                self.timer.remainingTime -= 1
+                print(self.timer.remainingTime)
+            }
             DispatchQueue.main.async {
                 // main UI thread
+                self.labelRemainingTime.text = String(self.timer.remainingTime)
             }
         }
-        
     }
 
     /*

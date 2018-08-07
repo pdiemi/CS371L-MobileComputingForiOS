@@ -18,9 +18,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var selectedTimerIndex: Int!
     var isCountdown: Bool = false
     var selectedTimer: Timer?
-    var selectedEvent: String?
-    var selectedLocation: String?
-    var selectedRemainingTime: Int64?
     
     
     override func viewDidLoad() {
@@ -66,40 +63,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    //
-    //  This method is called when a tableview cell is clicked.
-    //  The method resets flags and performs a segue to Countdown view controller
-    //
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedTimerIndex = indexPath.row
-        selectedTimer = timers[selectedTimerIndex]
-        selectedEvent = selectedTimer?.event
-        selectedLocation = selectedTimer?.location
-        selectedRemainingTime = selectedTimer?.remainingTime
-        isCountdown = true
-        if (isCountdown && selectedTimer != nil) {
-            performSegue(withIdentifier: "countdownSegue", sender: self) }
-    }
 
     //
     // Prepare for segues
     //
     override func prepare(for segue: UIStoryboardSegue, sender: (Any)?) {
-        if segue.identifier == "addSegue" {
+        switch segue.identifier {
+        case "addSegue":
             let destination = segue.destination as? AddViewController
             destination?.delegate = self
-        }
-        if segue.identifier == "countdownSegue" {
+        
+        case "countdownSegue":
             let destination = segue.destination as? CountdownViewController
             destination?.delegate = self
-            if isCountdown {
-                print(destination?.timer != nil)
+            if let indexPath = self.timerTableView.indexPathForSelectedRow {
+                selectedTimerIndex = indexPath.row
+                selectedTimer = timers[selectedTimerIndex]
+                isCountdown = true
                 destination?.timer = selectedTimer
-                print(destination?.timer != nil)
-                destination?.selectedEvent = selectedEvent
-                destination?.selectedLocation = selectedLocation
-                destination?.selectedRemainingTime = selectedRemainingTime
             }
+        default:
+            break
         }
     }
     
