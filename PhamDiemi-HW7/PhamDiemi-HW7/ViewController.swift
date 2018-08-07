@@ -1,6 +1,8 @@
 //
 //  ViewController.swift
 //  PhamDiemi-HW7
+//  EID: mp43952
+//  Course: CS371L
 //
 //  Created by Pham, Diemi on 8/7/18.
 //  Copyright © 2018 Pham, Diemi. All rights reserved.
@@ -9,7 +11,6 @@
 import UIKit
 
 let timerCellIdentifier = "timerCellIdentifier"
-var timers: [Timer] = []
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NewTimerDelegate, UpdatedTimerDelegate {
     
@@ -19,6 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var isCountdown: Bool = false
     var selectedTimer: Timer?
     
+    var timers: [Timer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         timerTableView.reloadData()
         
-        // TESTING
+        // Initialize Timer array for testing
+        // Comment out the following line if you want to start with an empty Timer array
         timersInit()
     }
 

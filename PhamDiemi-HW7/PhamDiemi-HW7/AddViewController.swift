@@ -1,6 +1,8 @@
 //
 //  AddViewController.swift
 //  PhamDiemi-HW7
+//  EID: mp43952
+//  Course: CS371L
 //
 //  Created by Pham, Diemi on 8/7/18.
 //  Copyright © 2018 Pham, Diemi. All rights reserved.
