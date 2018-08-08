@@ -10,7 +10,7 @@
 
 import UIKit
 
-class Timer {
+class Timer: Equatable {
     var event: String
     var location: String
     var remainingTime: Int64
@@ -27,6 +27,10 @@ class Timer {
     
     func update(t: Int64) {
         remainingTime = t
+    }
+    
+    static func == (lhs: Timer, rhs: Timer) -> Bool {
+        return lhs.event == rhs.event && lhs.location == rhs.location
     }
 }
 

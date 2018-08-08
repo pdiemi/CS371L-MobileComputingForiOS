@@ -115,6 +115,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func addNewTimer(event: String, location: String, remainingTime: Int64) {
         let newTimer = Timer(e: event, l: location, t: remainingTime)
+        if timers.contains(newTimer) {
+            let alert = UIAlertController(title: "Arealdy Exist",
+                                          message: "The event you entered already exists. Please enter a new event. The (Event, Locaion) pair must not be duplicated.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         timers.append(newTimer)
     }
     
