@@ -1,12 +1,15 @@
 //
 //  AppDelegate.swift
 //  PhamDiemi-HW8
+//  EID: mp43952
+//  Course: CS371L
 //
 //  Created by Pham, Diemi on 8/8/18.
 //  Copyright © 2018 Pham, Diemi. All rights reserved.
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // ADDED:  Ask user if it's okay to enable notifications
+        // Options include .alert, .sound, .badge
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert], completionHandler: {
+            (success, error) in
+            if success {
+                print("Permission Granted")
+            } else {
+                print("There was a problem!")
+            }
+        })
+        
         return true
     }
 
