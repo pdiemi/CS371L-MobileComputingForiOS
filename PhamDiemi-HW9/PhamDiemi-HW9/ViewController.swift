@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
 
@@ -16,6 +17,11 @@ class ViewController: UIViewController {
     var screenHeight: CGFloat?
     var width: CGFloat?
     var height: CGFloat?
+    var right: CGFloat?
+    var left: CGFloat?
+    var top: CGFloat?
+    var bottom: CGFloat?
+    var shouldStop: Bool = true
     var direction: UISwipeGestureRecognizerDirection?
     
     
@@ -29,6 +35,8 @@ class ViewController: UIViewController {
         screenHeight = screenSize.height
         width = CGFloat(screenWidth!/9)
         height = CGFloat(screenHeight!/19)
+        right = screenWidth! - width!/2
+        bottom = screenHeight! - height!/2
         
         myLabel = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: width! , height: height!))
         myLabel?.center = self.view.center
@@ -36,9 +44,21 @@ class ViewController: UIViewController {
         self.view.addSubview(myLabel!)
         
         // Define Gesture handlers
-        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeGesture(recognizer:)))
-        swipeRecognizer.direction = direction!
-        self.view.addGestureRecognizer(swipeRecognizer)
+        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeRightGesture(recognizer:)))
+        swipeRightRecognizer.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRightRecognizer)
+        
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeLeftGesture(recognizer:)))
+        swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeLeftRecognizer)
+        
+        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeUpGesture(recognizer:)))
+        swipeUpRecognizer.direction = UISwipeGestureRecognizerDirection.up
+        self.view.addGestureRecognizer(swipeUpRecognizer)
+        
+        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeDownGesture(recognizer:)))
+        swipeDownRecognizer.direction = UISwipeGestureRecognizerDirection.down
+        self.view.addGestureRecognizer(swipeDownRecognizer)
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(recognizeTapGesture(recognize:)))
         self.view.addGestureRecognizer(tapRecognizer)
@@ -50,48 +70,133 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @objc func recognizeSwipeGesture(recognizer: UISwipeGestureRecognizer) {
+    //
+    // Swipe Right Gesture
+    //
+    @objc func recognizeSwipeRightGesture(recognizer: UISwipeGestureRecognizer) {
         
-        switch recognizer.direction {
-        case UISwipeGestureRecognizerDirection.right:
-            while (myLabel?.center.x != self.view.bounds.width) {
-                UIView.animate(withDuration: 0.3,
-                               animations: {
-                                self.myLabel?.center.x += self.width!
-                })
+        if self.myLabel?.center.x == self.right {
+            return
+        } else {
+            var myLabelX: CGFloat = (self.myLabel?.center.x)!
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                while (myLabelX != self.right) {
+                    usleep(300000)
+                    myLabelX += self.width!
+                    DispatchQueue.main.async {
+                        UIView.animate(withDuration: 0,
+                                       animations: {
+                                        self.myLabel?.center.x = myLabelX },
+                                       completion: {finished in
+                                        if self.myLabel?.center.x == self.right {
+                                            self.myLabel?.backgroundColor = UIColor.red } }
+                        )
+                    }
+                }
             }
-            myLabel?.backgroundColor = UIColor.red
-        case UISwipeGestureRecognizerDirection.left:
-            while (myLabel?.center.x != 0) {
-                UIView.animate(withDuration: 0.3,
-                               animations: {
-                                self.myLabel?.center.x -= self.width!
-                })
-            }
-            myLabel?.backgroundColor = UIColor.red
-        case UISwipeGestureRecognizerDirection.up:
-            while (myLabel?.center.y != 0) {
-                UIView.animate(withDuration: 0.3,
-                               animations: {
-                                self.myLabel?.center.y -= self.height!
-                })
-            }
-            myLabel?.backgroundColor = UIColor.red
-        case UISwipeGestureRecognizerDirection.down:
-            while (myLabel?.center.y != self.view.bounds.height) {
-                UIView.animate(withDuration: 0.3,
-                               animations: {
-                                self.myLabel?.center.x += self.height!
-                })
-            }
-            myLabel?.backgroundColor = UIColor.red
-        default:
-            break
         }
     }
     
-    @objc func recognizeTapGesture(recognize: UITapGestureRecognizer) {
+    //
+    // Swipe Left Gesture
+    //
+    @objc func recognizeSwipeLeftGesture(recognizer: UISwipeGestureRecognizer) {
         
+        if self.myLabel?.center.x == self.left {
+            return
+        } else {
+            var myLabelX: CGFloat = (self.myLabel?.center.x)!
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                while (myLabelX != self.left) {
+                    usleep(300000)
+                    myLabelX -= self.width!
+                    DispatchQueue.main.async {
+                        UIView.animate(withDuration: 0,
+                                       animations: {
+                                        self.myLabel?.center.x = myLabelX },
+                                       completion: {finished in
+                                        if self.myLabel?.center.x == self.left {
+                                            self.myLabel?.backgroundColor = UIColor.red } }
+                        )
+                    }
+                }
+            }
+        }
+    }
+    
+    //
+    // Swipe Up Gesture
+    //
+    @objc func recognizeSwipeUpGesture(recognizer: UISwipeGestureRecognizer) {
+        
+        if self.myLabel?.center.y == self.top {
+            return
+        } else {
+            var myLabelY: CGFloat = (self.myLabel?.center.y)!
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                while (myLabelY != self.top) {
+                    usleep(300000)
+                    myLabelY -= self.height!
+                    DispatchQueue.main.async {
+                        UIView.animate(withDuration: 0,
+                                       animations: {
+                                        self.myLabel?.center.x = myLabelY },
+                                       completion: {finished in
+                                        if self.myLabel?.center.y == self.top {
+                                            self.myLabel?.backgroundColor = UIColor.red } }
+                        )
+                    }
+                }
+            }
+        }
+    }
+    
+    //
+    // Swipe Down Gesture
+    //
+    @objc func recognizeSwipeDownGesture(recognizer: UISwipeGestureRecognizer) {
+        
+        if self.myLabel?.center.y == self.bottom {
+            return
+        } else {
+            var myLabelY: CGFloat = (self.myLabel?.center.y)!
+            
+            DispatchQueue.global(qos: .userInteractive).async {
+                while (myLabelY != self.bottom) {
+                    usleep(300000)
+                    myLabelY += self.height!
+                    DispatchQueue.main.async {
+                        UIView.animate(withDuration: 0,
+                                       animations: {
+                                        self.myLabel?.center.x = myLabelY },
+                                       completion: {finished in
+                                        if self.myLabel?.center.y == self.bottom {
+                                            self.myLabel?.backgroundColor = UIColor.red } }
+                        )
+                    }
+                }
+            }
+        }
+    }
+    
+    //
+    // Tap Gesture
+    //
+    @objc func recognizeTapGesture(recognize: UITapGestureRecognizer) {
+        myLabel?.center = self.view.center
+        myLabel?.backgroundColor = UIColor.green
+        
+        while (myLabel?.center.y != bottom) {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0.3,
+                           animations: {
+                            self.myLabel?.center.y += self.height!
+            })
+        }
+        //myLabel?.backgroundColor = UIColor.red
     }
 
 }
