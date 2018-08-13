@@ -21,7 +21,8 @@ class ViewController: UIViewController {
     var left: CGFloat?
     var top: CGFloat?
     var bottom: CGFloat?
-    var shouldStop: Bool = true
+    var directionChanged: String = "none"
+    var gameOver: Bool = false
     var direction: UISwipeGestureRecognizerDirection?
     
     
@@ -77,21 +78,25 @@ class ViewController: UIViewController {
     //
     @objc func recognizeSwipeRightGesture(recognizer: UISwipeGestureRecognizer) {
         
-        if self.myLabel?.center.x == self.right {
+        if gameOver {
             return
         } else {
+            directionChanged = "right"
             var myLabelX: CGFloat = (self.myLabel?.center.x)!
             
             DispatchQueue.global(qos: .userInteractive).async {
-                while (myLabelX != self.right) {
+                while (!self.gameOver && self.directionChanged == "right") {
                     usleep(300000)
                     myLabelX += self.width!
+                    if Int(myLabelX - self.right!) >= 0 {
+                        self.gameOver = true }
+                    
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0,
                                        animations: {
                                         self.myLabel?.center.x = myLabelX },
                                        completion: {finished in
-                                        if self.myLabel?.center.x == self.right {
+                                        if self.gameOver {
                                             self.myLabel?.backgroundColor = UIColor.red } }
                         )
                     }
@@ -105,21 +110,24 @@ class ViewController: UIViewController {
     //
     @objc func recognizeSwipeLeftGesture(recognizer: UISwipeGestureRecognizer) {
         
-        if self.myLabel?.center.x == self.left {
+        if gameOver {
             return
         } else {
+            directionChanged = "left"
             var myLabelX: CGFloat = (self.myLabel?.center.x)!
             
             DispatchQueue.global(qos: .userInteractive).async {
-                while (myLabelX != self.left) {
+                while (!self.gameOver && self.directionChanged == "left") {
                     usleep(300000)
                     myLabelX -= self.width!
+                    if Int(myLabelX - self.left!) <= 0 {
+                        self.gameOver = true }
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0,
                                        animations: {
                                         self.myLabel?.center.x = myLabelX },
                                        completion: {finished in
-                                        if self.myLabel?.center.x == self.left {
+                                        if self.gameOver {
                                             self.myLabel?.backgroundColor = UIColor.red } }
                         )
                     }
@@ -133,21 +141,24 @@ class ViewController: UIViewController {
     //
     @objc func recognizeSwipeUpGesture(recognizer: UISwipeGestureRecognizer) {
         
-        if self.myLabel?.center.y == self.top {
+        if gameOver {
             return
         } else {
+            directionChanged = "up"
             var myLabelY: CGFloat = (self.myLabel?.center.y)!
             
             DispatchQueue.global(qos: .userInteractive).async {
-                while (myLabelY - self.top!) > 0 {
+                while !self.gameOver  && self.directionChanged == "up" {
                     usleep(300000)
                     myLabelY -= self.height!
+                    if Int(myLabelY - self.top!) <= 0 {
+                        self.gameOver = true }
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0,
                                        animations: {
                                         self.myLabel?.center.y = myLabelY },
                                        completion: {finished in
-                                        if ((self.myLabel?.center.y)! - self.top!) <= 0 {
+                                        if self.gameOver {
                                             self.myLabel?.backgroundColor = UIColor.red } }
                         )
                     }
@@ -161,22 +172,25 @@ class ViewController: UIViewController {
     //
     @objc func recognizeSwipeDownGesture(recognizer: UISwipeGestureRecognizer) {
         
-        if self.myLabel?.center.y == self.bottom {
+        if gameOver {
             return
         } else {
+            directionChanged = "down"
             var myLabelY: CGFloat = (self.myLabel?.center.y)!
             
             DispatchQueue.global(qos: .userInteractive).async {
-                while (myLabelY - self.bottom!) <= 0 {
+                while !self.gameOver && self.directionChanged == "down" {
                     usleep(300000)
                     myLabelY += self.height!
-                    print(myLabelY - self.bottom!)
+                    if Int(myLabelY - self.bottom!) >= 0 {
+                        self.gameOver = true }
+                    
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0,
                                        animations: {
                                         self.myLabel?.center.y = myLabelY },
                                        completion: {finished in
-                                        if ((self.myLabel?.center.y)! - self.bottom!) >= 0 {
+                                        if self.gameOver {
                                             self.myLabel?.backgroundColor = UIColor.red } }
                         )
                     }
@@ -191,15 +205,27 @@ class ViewController: UIViewController {
     @objc func recognizeTapGesture(recognize: UITapGestureRecognizer) {
         myLabel?.center = self.view.center
         myLabel?.backgroundColor = UIColor.green
-        
-        while (myLabel?.center.y != bottom) {
-            UIView.animate(withDuration: 0.3,
-                           delay: 0.3,
-                           animations: {
-                            self.myLabel?.center.y += self.height!
-            })
-        }
-        //myLabel?.backgroundColor = UIColor.red
+        var myLabelY: CGFloat = (self.myLabel?.center.y)!
+        directionChanged = "tap"
+        gameOver = false
+        DispatchQueue.global(qos: .userInteractive).async {
+            while !self.gameOver && self.directionChanged == "tap" {
+                usleep(300000)
+                myLabelY += self.height!
+                if Int(myLabelY - self.bottom!) >= 0 {
+                    self.gameOver = true }
+                
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0,
+                                   animations: {
+                                    self.myLabel?.center.y = myLabelY },
+                                   completion: {finished in
+                                    if self.gameOver {
+                                        self.myLabel?.backgroundColor = UIColor.red } }
+                    )
+                }
+            }
+        }        //myLabel?.backgroundColor = UIColor.red
     }
 
 }
