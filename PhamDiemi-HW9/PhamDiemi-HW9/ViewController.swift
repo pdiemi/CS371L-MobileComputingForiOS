@@ -36,6 +36,8 @@ class ViewController: UIViewController {
         width = CGFloat(screenWidth!/9)
         height = CGFloat(screenHeight!/19)
         right = screenWidth! - width!/2
+        left = 0 + width!/2
+        top = 0 + height!/2
         bottom = screenHeight! - height!/2
         
         myLabel = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: width! , height: height!))
@@ -137,15 +139,15 @@ class ViewController: UIViewController {
             var myLabelY: CGFloat = (self.myLabel?.center.y)!
             
             DispatchQueue.global(qos: .userInteractive).async {
-                while (myLabelY != self.top) {
+                while (myLabelY - self.top!) > 0 {
                     usleep(300000)
                     myLabelY -= self.height!
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0,
                                        animations: {
-                                        self.myLabel?.center.x = myLabelY },
+                                        self.myLabel?.center.y = myLabelY },
                                        completion: {finished in
-                                        if self.myLabel?.center.y == self.top {
+                                        if ((self.myLabel?.center.y)! - self.top!) <= 0 {
                                             self.myLabel?.backgroundColor = UIColor.red } }
                         )
                     }
@@ -165,15 +167,16 @@ class ViewController: UIViewController {
             var myLabelY: CGFloat = (self.myLabel?.center.y)!
             
             DispatchQueue.global(qos: .userInteractive).async {
-                while (myLabelY != self.bottom) {
+                while (myLabelY - self.bottom!) <= 0 {
                     usleep(300000)
                     myLabelY += self.height!
+                    print(myLabelY - self.bottom!)
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0,
                                        animations: {
-                                        self.myLabel?.center.x = myLabelY },
+                                        self.myLabel?.center.y = myLabelY },
                                        completion: {finished in
-                                        if self.myLabel?.center.y == self.bottom {
+                                        if ((self.myLabel?.center.y)! - self.bottom!) >= 0 {
                                             self.myLabel?.backgroundColor = UIColor.red } }
                         )
                     }
