@@ -9,14 +9,20 @@
 import UIKit
 import Foundation
 
+let numberOfRow: Int = 19
+let numberOfCollumn: Int = 9
+
 class ViewController: UIViewController {
 
+    
     //let screenSize: CGRect = UIScreen.main.bounds
     var myLabel: UILabel?
+    var myLabelRowth: Int = 9
+    var myLabelCollumn: Int = 4
     var screenWidth: CGFloat = UIScreen.main.bounds.width
     var screenHeight: CGFloat = UIScreen.main.bounds.height
-    var width: CGFloat = UIScreen.main.bounds.width/9
-    var height: CGFloat = UIScreen.main.bounds.height/19
+    var width: CGFloat = UIScreen.main.bounds.width/CGFloat(numberOfCollumn)
+    var height: CGFloat = UIScreen.main.bounds.height/CGFloat(numberOfRow)
     var right: CGFloat?
     var left: CGFloat?
     var top: CGFloat?
@@ -38,10 +44,13 @@ class ViewController: UIViewController {
         top = 0 + height/2
         bottom = screenHeight - height/2
         
+        // Display myLabel
         myLabel = UILabel(frame: CGRect(x: CGFloat(0), y: CGFloat(0), width: width , height: height))
         myLabel?.center = self.view.center
         myLabel?.backgroundColor = UIColor.green
         self.view.addSubview(myLabel!)
+        myLabelRowth = 9
+        myLabelCollumn = 4
         
         // Define Gesture handlers
         let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeRightGesture(recognizer:)))
@@ -80,40 +89,7 @@ class ViewController: UIViewController {
             return
         } else {
             semaphoreGameOver.signal()
-            var myLabelX: CGFloat = (self.myLabel?.center.x)!
-
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.semaphoreDirectionChanged.wait()
-                self.directionChanged = "right"
-                self.semaphoreDirectionChanged.signal()
-                
-                self.semaphoreGameOver.wait()
-                while (!self.gameOver) {
-                    self.semaphoreGameOver.signal()
-                    self.semaphoreDirectionChanged.wait()
-                    if self.directionChanged != "right" {
-                        self.semaphoreDirectionChanged.signal()
-                        return
-                    } else {
-                        self.semaphoreDirectionChanged.signal()
-                        usleep(300000)
-                        
-                        self.semaphoreGameOver.wait()
-                        self.semaphoreDirectionChanged.wait()
-                        myLabelX += self.width
-                        if Int(myLabelX - self.right!) == 0 && self.directionChanged == "right" {
-                            self.gameOver = true }
-                        self.semaphoreGameOver.signal()
-                        self.semaphoreDirectionChanged.signal()
-                        
-                        // Update UI in the main thread
-                        self.updateUI(direction: "right", position: myLabelX)
-                        
-                        self.semaphoreGameOver.wait()
-                    }
-                }
-                self.semaphoreGameOver.signal()
-            }
+            runBackgroundThread(direction: "right")
         }
     }
     
@@ -127,41 +103,7 @@ class ViewController: UIViewController {
             return
         } else {
             semaphoreGameOver.signal()
-            var myLabelX: CGFloat = (self.myLabel?.center.x)!
-
-            
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.semaphoreDirectionChanged.wait()
-                self.directionChanged = "left"
-                self.semaphoreDirectionChanged.signal()
-                
-                self.semaphoreGameOver.wait()
-                while (!self.gameOver) {
-                    self.semaphoreGameOver.signal()
-                    self.semaphoreDirectionChanged.wait()
-                    if self.directionChanged != "left" {
-                        self.semaphoreDirectionChanged.signal()
-                        return
-                    } else {
-                        self.semaphoreDirectionChanged.signal()
-                        usleep(300000)
-                        
-                        self.semaphoreGameOver.wait()
-                        self.semaphoreDirectionChanged.wait()
-                        myLabelX -= self.width
-                        if Int(myLabelX - self.left!) == 0 && self.directionChanged == "left" {
-                            self.gameOver = true }
-                        self.semaphoreGameOver.signal()
-                        self.semaphoreDirectionChanged.signal()
-                        
-                        // Update UI in the main thread
-                        self.updateUI(direction: "left", position: myLabelX)
-                        
-                        self.semaphoreGameOver.wait()
-                    }
-                }
-                self.semaphoreGameOver.signal()
-            }
+            runBackgroundThread(direction: "left")
         }
     }
     
@@ -175,41 +117,7 @@ class ViewController: UIViewController {
             return
         } else {
             semaphoreGameOver.signal()
-            var myLabelY: CGFloat = (self.myLabel?.center.y)!
-
-            
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.semaphoreDirectionChanged.wait()
-                self.directionChanged = "up"
-                self.semaphoreDirectionChanged.signal()
-                
-                self.semaphoreGameOver.wait()
-                while (!self.gameOver) {
-                    self.semaphoreGameOver.signal()
-                    self.semaphoreDirectionChanged.wait()
-                    if self.directionChanged != "up" {
-                        self.semaphoreDirectionChanged.signal()
-                        return
-                    } else {
-                        self.semaphoreDirectionChanged.signal()
-                        usleep(300000)
-                        
-                        self.semaphoreGameOver.wait()
-                        self.semaphoreDirectionChanged.wait()
-                        myLabelY -= self.height
-                        if Int(myLabelY - self.top!) == 0 && self.directionChanged == "up" {
-                            self.gameOver = true }
-                        self.semaphoreGameOver.signal()
-                        self.semaphoreDirectionChanged.signal()
-                        
-                        // Update UI in the main thread
-                        self.updateUI(direction: "up", position: myLabelY)
-                        
-                        self.semaphoreGameOver.wait()
-                    }
-                }
-                self.semaphoreGameOver.signal()
-            }
+            runBackgroundThread(direction: "up")
         }
     }
     
@@ -223,40 +131,7 @@ class ViewController: UIViewController {
             return
         } else {
             semaphoreGameOver.signal()
-            var myLabelY: CGFloat = (self.myLabel?.center.y)!
-         
-            DispatchQueue.global(qos: .userInteractive).async {
-                self.semaphoreDirectionChanged.wait()
-                self.directionChanged = "down"
-                self.semaphoreDirectionChanged.signal()
-                
-                self.semaphoreGameOver.wait()
-                while (!self.gameOver) {
-                    self.semaphoreGameOver.signal()
-                    self.semaphoreDirectionChanged.wait()
-                    if self.directionChanged != "down" {
-                        self.semaphoreDirectionChanged.signal()
-                        return
-                    } else {
-                        self.semaphoreDirectionChanged.signal()
-                        usleep(300000)
-                        
-                        self.semaphoreGameOver.wait()
-                        self.semaphoreDirectionChanged.wait()
-                        myLabelY += self.height
-                        if Int(myLabelY - self.bottom!) == 0 && self.directionChanged == "down"{
-                            self.gameOver = true }
-                        self.semaphoreGameOver.signal()
-                        self.semaphoreDirectionChanged.signal()
-                        
-                        // Update UI in the main thread
-                        self.updateUI(direction: "down", position: myLabelY)
-                        
-                        self.semaphoreGameOver.wait()
-                    }
-                }
-                self.semaphoreGameOver.signal()
-            }
+            runBackgroundThread(direction: "down")
         }
     }
     
@@ -266,7 +141,7 @@ class ViewController: UIViewController {
     @objc func recognizeTapGesture(recognize: UITapGestureRecognizer) {
         myLabel?.center = self.view.center
         myLabel?.backgroundColor = UIColor.green
-        var myLabelY: CGFloat = (self.myLabel?.center.y)!
+        //var myLabelY: CGFloat = (self.myLabel?.center.y)!
         
         semaphoreGameOver.wait()
         self.semaphoreDirectionChanged.wait()
@@ -275,38 +150,11 @@ class ViewController: UIViewController {
         semaphoreGameOver.signal()
         self.semaphoreDirectionChanged.signal()
         
-        DispatchQueue.global(qos: .userInteractive).async {
-            self.semaphoreGameOver.wait()
-            while (!self.gameOver) {
-                self.semaphoreGameOver.signal()
-                self.semaphoreDirectionChanged.wait()
-                if self.directionChanged != "tap" {
-                    self.semaphoreDirectionChanged.signal()
-                    return
-                } else {
-                    self.semaphoreDirectionChanged.signal()
-                    usleep(300000)
-                    
-                    self.semaphoreGameOver.wait()
-                    self.semaphoreDirectionChanged.wait()
-                    myLabelY += self.height
-                    if Int(myLabelY - self.bottom!) == 0 && self.directionChanged == "tap"{
-                        self.gameOver = true }
-                    self.semaphoreGameOver.signal()
-                    self.semaphoreDirectionChanged.signal()
-                    
-                    // Update UI in the main thread
-                    self.updateUI(direction: "tap", position: myLabelY)
-                    
-                    self.semaphoreGameOver.wait()
-                }
-            }
-            self.semaphoreGameOver.signal()
-        }
+        runBackgroundThread(direction: "tap")
     }
     
     //
-    // The method is called to Update UI in main thread
+    // The method is called to Update UI in main queue thread
     //
     func updateUI(direction: String, position: CGFloat) {
         DispatchQueue.main.async {
@@ -329,6 +177,74 @@ class ViewController: UIViewController {
         }
     }
     
+    //
+    // The method is called to run background thread for movement
+    //
+    func runBackgroundThread(direction: String) {
+        var myLabelY: CGFloat = (self.myLabel?.center.y)!
+        var myLabelX: CGFloat = (self.myLabel?.center.x)!
+        var newPosition: CGFloat!
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.semaphoreDirectionChanged.wait()
+            self.directionChanged = direction
+            self.semaphoreDirectionChanged.signal()
+            
+            self.semaphoreGameOver.wait()
+            while (!self.gameOver) {
+                self.semaphoreGameOver.signal()
+                self.semaphoreDirectionChanged.wait()
+                if self.directionChanged != direction {
+                    self.semaphoreDirectionChanged.signal()
+                    return
+                } else {
+                    self.semaphoreDirectionChanged.signal()
+                    usleep(300000)
+                    
+                    self.semaphoreGameOver.wait()
+                    self.semaphoreDirectionChanged.wait()
+                    
+                    switch direction {
+                    case "right":
+                        myLabelX += self.width
+                        if Int(myLabelX - self.right!) == 0 && self.directionChanged == direction {
+                            self.gameOver = true }
+                        newPosition = myLabelX
+                    case "left":
+                        myLabelX -= self.width
+                        if Int(myLabelX - self.left!) == 0 && self.directionChanged == direction {
+                            self.gameOver = true }
+                        newPosition = myLabelX
+                    case "up":
+                        myLabelY -= self.height
+                        if Int(myLabelY - self.top!) == 0 && self.directionChanged == direction {
+                            self.gameOver = true }
+                        newPosition = myLabelY
+                    case "down":
+                        myLabelY += self.height
+                        if Int(myLabelY - self.bottom!) == 0 && self.directionChanged == direction{
+                            self.gameOver = true }
+                        newPosition = myLabelY
+                    case "tap":
+                        myLabelY += self.height
+                        if Int(myLabelY - self.bottom!) == 0 && self.directionChanged == direction{
+                            self.gameOver = true }
+                        newPosition = myLabelY
+                    default:
+                        break
+                    }
+                    
+                    self.semaphoreGameOver.signal()
+                    self.semaphoreDirectionChanged.signal()
+                    
+                    // Update UI in the main thread
+                    self.updateUI(direction: direction, position: newPosition)
+                    
+                    self.semaphoreGameOver.wait()
+                }
+            }
+            self.semaphoreGameOver.signal()
+        }
+    }
 
 }
 
