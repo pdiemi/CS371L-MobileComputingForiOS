@@ -53,19 +53,19 @@ class ViewController: UIViewController {
         myLabelCollumn = 4
         
         // Define Gesture handlers
-        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeRightGesture(recognizer:)))
+        let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeGesture(recognizer:)))
         swipeRightRecognizer.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRightRecognizer)
         
-        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeLeftGesture(recognizer:)))
+        let swipeLeftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeGesture(recognizer:)))
         swipeLeftRecognizer.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeftRecognizer)
         
-        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeUpGesture(recognizer:)))
+        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeGesture(recognizer:)))
         swipeUpRecognizer.direction = UISwipeGestureRecognizerDirection.up
         self.view.addGestureRecognizer(swipeUpRecognizer)
         
-        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeDownGesture(recognizer:)))
+        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeGesture(recognizer:)))
         swipeDownRecognizer.direction = UISwipeGestureRecognizerDirection.down
         self.view.addGestureRecognizer(swipeDownRecognizer)
         
@@ -79,59 +79,36 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    //
-    // Swipe Right Gesture
-    //
-    @objc func recognizeSwipeRightGesture(recognizer: UISwipeGestureRecognizer) {
-        semaphoreGameOver.wait()
-        if gameOver {
-            semaphoreGameOver.signal()
-            return
-        } else {
-            semaphoreGameOver.signal()
-            runBackgroundThread(direction: "right")
-        }
-    }
     
     //
-    // Swipe Left Gesture
+    // Swipe Gesture
     //
-    @objc func recognizeSwipeLeftGesture(recognizer: UISwipeGestureRecognizer) {
-        semaphoreGameOver.wait()
-        if gameOver {
-            semaphoreGameOver.signal()
-            return
-        } else {
-            semaphoreGameOver.signal()
-            runBackgroundThread(direction: "left")
+    @IBAction func recognizeSwipeGesture(recognizer: UISwipeGestureRecognizer) {
+        
+        var swipeDirection: String = "none"
+        
+        switch recognizer.direction {
+        case UISwipeGestureRecognizerDirection.right:
+            swipeDirection = "right"
+        case UISwipeGestureRecognizerDirection.left:
+            swipeDirection = "left"
+        case UISwipeGestureRecognizerDirection.up:
+            swipeDirection = "up"
+        case UISwipeGestureRecognizerDirection.down:
+            swipeDirection = "down"
+        default:
+            break
         }
-    }
-    
-    //
-    // Swipe Up Gesture
-    //
-    @objc func recognizeSwipeUpGesture(recognizer: UISwipeGestureRecognizer) {
         semaphoreGameOver.wait()
-        if gameOver {
+        semaphoreDirectionChanged.wait()
+        if gameOver || swipeDirection == directionChanged {
             semaphoreGameOver.signal()
+            semaphoreDirectionChanged.signal()
             return
         } else {
             semaphoreGameOver.signal()
-            runBackgroundThread(direction: "up")
-        }
-    }
-    
-    //
-    // Swipe Down Gesture
-    //
-    @objc func recognizeSwipeDownGesture(recognizer: UISwipeGestureRecognizer) {
-        semaphoreGameOver.wait()
-        if gameOver {
-            semaphoreGameOver.signal()
-            return
-        } else {
-            semaphoreGameOver.signal()
-            runBackgroundThread(direction: "down")
+            semaphoreDirectionChanged.signal()
+            runBackgroundThread(direction: swipeDirection)
         }
     }
     
