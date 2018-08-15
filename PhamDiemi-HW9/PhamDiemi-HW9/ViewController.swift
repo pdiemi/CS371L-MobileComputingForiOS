@@ -1,6 +1,8 @@
 //
 //  ViewController.swift
 //  PhamDiemi-HW9
+//  EID: mp43952
+//  Course: CS371L
 //
 //  Created by Pham, Diemi on 8/10/18.
 //  Copyright © 2018 Pham, Diemi. All rights reserved.
@@ -17,8 +19,8 @@ class ViewController: UIViewController {
     
     //let screenSize: CGRect = UIScreen.main.bounds
     var myLabel: UILabel?
-    var myLabelRowth: Int = 9
-    var myLabelCollumn: Int = 4
+    //var myLabelRowth: Int = 9
+    //var myLabelCollumn: Int = 4
     var screenWidth: CGFloat = UIScreen.main.bounds.width
     var screenHeight: CGFloat = UIScreen.main.bounds.height
     var width: CGFloat = UIScreen.main.bounds.width/CGFloat(numberOfCollumn)
@@ -49,8 +51,8 @@ class ViewController: UIViewController {
         myLabel?.center = self.view.center
         myLabel?.backgroundColor = UIColor.green
         self.view.addSubview(myLabel!)
-        myLabelRowth = 9
-        myLabelCollumn = 4
+        //myLabelRowth = 9
+        //myLabelCollumn = 4
         
         // Define Gesture handlers
         let swipeRightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(recognizeSwipeGesture(recognizer:)))
@@ -115,7 +117,7 @@ class ViewController: UIViewController {
     //
     // Tap Gesture
     //
-    @objc func recognizeTapGesture(recognize: UITapGestureRecognizer) {
+    @IBAction func recognizeTapGesture(recognize: UITapGestureRecognizer) {
         myLabel?.center = self.view.center
         myLabel?.backgroundColor = UIColor.green
         //var myLabelY: CGFloat = (self.myLabel?.center.y)!
@@ -128,6 +130,7 @@ class ViewController: UIViewController {
         self.semaphoreDirectionChanged.signal()
         
         runBackgroundThread(direction: "tap")
+        
     }
     
     //
