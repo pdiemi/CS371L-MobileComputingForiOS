@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C92B9A3321261E8100E8DB37 /* DisplayImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92B9A3221261E8100E8DB37 /* DisplayImageViewController.swift */; };
 		C996AC48212480B900DA2658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C996AC47212480B900DA2658 /* AppDelegate.swift */; };
 		C996AC4A212480B900DA2658 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C996AC49212480B900DA2658 /* ViewController.swift */; };
 		C996AC4D212480B900DA2658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C996AC4B212480B900DA2658 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C92B9A3221261E8100E8DB37 /* DisplayImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayImageViewController.swift; sourceTree = "<group>"; };
 		C996AC44212480B900DA2658 /* PhamDiemi-HW10.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PhamDiemi-HW10.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C996AC47212480B900DA2658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C996AC49212480B900DA2658 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				C996AC50212480BA00DA2658 /* LaunchScreen.storyboard */,
 				C996AC53212480BA00DA2658 /* Info.plist */,
 				C996AC59212483AE00DA2658 /* ImageCell.swift */,
+				C92B9A3221261E8100E8DB37 /* DisplayImageViewController.swift */,
 			);
 			path = "PhamDiemi-HW10";
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			files = (
 				C996AC4A212480B900DA2658 /* ViewController.swift in Sources */,
 				C996AC48212480B900DA2658 /* AppDelegate.swift in Sources */,
+				C92B9A3321261E8100E8DB37 /* DisplayImageViewController.swift in Sources */,
 				C996AC5A212483AE00DA2658 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

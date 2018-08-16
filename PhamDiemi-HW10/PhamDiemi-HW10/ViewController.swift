@@ -8,7 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+let NUMBER_IMAGES_PER_ROW: CGFloat = 3
+
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -23,6 +25,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Do any additional setup after loading the view, typically from a nib.
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -49,7 +53,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         // reference to my variable "image" in ImageCell.swift
         cell.image.image = UIImage(named:currentImageName)!
-        
+    
         return cell
         
     }
@@ -64,8 +68,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             return self.imageData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print(indexPath.row)
+    //
+    // Set the size of the collectionViewCell so that
+    // there are NUMBER_IMAGES_PER_ROW images per row.
+    // For this HW, NUMBER_IMAGES_PER_ROW = 3
+    //
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = collectionView.bounds.width/NUMBER_IMAGES_PER_ROW
+        let cellHeight = cellWidth
+        
+        return CGSize(width: cellWidth, height: cellHeight)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "displayImageSegue" {
+            let destination = segue.destination as? DisplayImageViewController
+            if let cell = sender as? ImageCell {
+                destination?.image = cell.image.image
+            }
+        }
+    }
+
 }
 
