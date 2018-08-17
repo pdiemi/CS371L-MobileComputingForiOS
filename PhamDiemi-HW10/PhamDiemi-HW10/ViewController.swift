@@ -1,6 +1,8 @@
 //
 //  ViewController.swift
 //  PhamDiemi-HW10
+//  EID: mp43952
+//  Course: CS371L
 //
 //  Created by Pham, Diemi on 8/15/18.
 //  Copyright © 2018 Pham, Diemi. All rights reserved.
@@ -14,16 +16,16 @@ let NUMBER_IMAGES_PER_ROW: CGFloat = 3
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SaveImageDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    //var takenImage: UIImageView = UIImageView()
-    var image: UIImage!
-    var isFromPicker: Bool = false
+    var image: UIImage!  // Image picked from system Library or captured with camera
+    var isFromPicker: Bool = false  // Whether selected image is from collectionView
     let picker = UIImagePickerController()
     
-    
+    // Data source for images from XCAssests category
     var imageData = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
                      "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
                      "21", "22", "23", "24", "25", "26", "27", "28"]
     
+    // Data source for new added images
     var newImageData: [UIImage] = []
     
     var imageCounter: Int = 0
@@ -48,34 +50,31 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func saveImage(_ saveConfirm: Bool) {
         if saveConfirm {
             newImageData.insert(image, at: 0)
+            
+            imageAddedAlert()
             collectionView.reloadData()
         }
     }
     
+    //
+    // Conform for UICollectionViewDelegate
+    //
 
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
+        -> Int {
+            
+            return self.imageData.count + self.newImageData.count
+    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // Be sure to cast the following to your custom Cell class using “as!”
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdentifier", for: indexPath) as! ImageCell
-        /*
-        if imageCounter < self.imageData.count {
-            let currentImageName = self.imageData[self.imageCounter]
-            // reference to my variable "image" in ImageCell.swift
-            cell.image.image = UIImage(named:currentImageName)!
-        }
-        self.imageCounter += 1
-        if self.imageCounter >= self.imageData.count {
-            if self.newImageCounter >= self.newImageData.count {
-                self.imageCounter = 0
-                self.newImageCounter = 0
-            } else {
-                cell.image.image = newImageData[newImageCounter]
-                self.newImageCounter += 1
-                return cell
-            }
-        }
-        */
+
         if self.newImageCounter >= self.newImageData.count {
             if imageCounter < self.imageData.count {
                 let currentImageName = self.imageData[self.imageCounter]
@@ -95,16 +94,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         return cell
         
-    }
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
-        -> Int {
-            
-            return self.imageData.count + self.newImageData.count
     }
     
     //
@@ -135,10 +124,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         picker.delegate = self
         // set the source to be the Photo Library
         picker.sourceType = .photoLibrary;
-        
-        // present the picker in a full screen popover
-        //picker.modalPresentationStyle = .fullScreen
-        
         present(picker, animated: true, completion: nil)
     }
     
@@ -161,6 +146,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 return
             }
             
+            picker.delegate = self
             // whole picture, not an edited version
             picker.allowsEditing = false
             
@@ -191,14 +177,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         present(alertVC, animated: true, completion: nil)
     }
     
-    // Save image taken by camera to MyCollections
-    func saveImage(_ sender: AnyObject) {
-        
-        //let imageName = NSDate() as Date
-        
-    }
-    
-    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -222,6 +200,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
     }
     
+    // Alert for adding an image to colectionView
+    func imageAddedAlert(){
+        let alertVC = UIAlertController(
+            title: "Image Added",
+            message: "The image is added to your Collection View.",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: {alert in _ = self.navigationController?.popViewController(animated: true)})
+        alertVC.addAction(okAction)
+        present(alertVC, animated: true,
+                completion: nil)
+    }
+    
     //
     // Set the size of the collectionViewCell so that
     // there are NUMBER_IMAGES_PER_ROW images per row.
@@ -237,7 +230,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.init()
     }
-    
+ 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }

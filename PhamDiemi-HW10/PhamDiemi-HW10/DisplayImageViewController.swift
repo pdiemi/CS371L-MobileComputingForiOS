@@ -25,11 +25,14 @@ class DisplayImageViewController: UIViewController, UINavigationControllerDelega
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Display the selected image
         imageView.image = image
-        if isFromPicker {
+        
+        if isFromPicker {  // Display save button for adding an image to the collectionView
             self.navigationController?.isToolbarHidden = false
             self.buttonSave.isEnabled = true
-        } else {
+        } else {  // Hide the save button if selected image is from collectionView
             self.navigationController?.isToolbarHidden = true
         }
     }
@@ -44,6 +47,7 @@ class DisplayImageViewController: UIViewController, UINavigationControllerDelega
         delegate?.saveImage(saveConfirm)
         _ = navigationController?.popViewController(animated: true)
     }
+    
     
     
     /*

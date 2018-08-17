@@ -1,6 +1,8 @@
 //
 //  AppDelegate.swift
 //  PhamDiemi-HW10
+//  EID: mp43952
+//  Course: CS371L
 //
 //  Created by Pham, Diemi on 8/15/18.
 //  Copyright © 2018 Pham, Diemi. All rights reserved.

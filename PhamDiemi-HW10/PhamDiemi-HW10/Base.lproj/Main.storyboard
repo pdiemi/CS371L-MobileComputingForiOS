@@ -41,12 +41,12 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="rPb-bo-PLo" secondAttribute="trailing" id="8Tp-ed-pPY"/>
                                             <constraint firstItem="rPb-bo-PLo" firstAttribute="centerY" secondItem="Aa4-HO-Ow4" secondAttribute="centerY" id="Bpa-xq-J7A"/>
+                                            <constraint firstItem="rPb-bo-PLo" firstAttribute="top" secondItem="Aa4-HO-Ow4" secondAttribute="top" id="CPw-Wr-hR2"/>
                                             <constraint firstItem="rPb-bo-PLo" firstAttribute="centerX" secondItem="Aa4-HO-Ow4" secondAttribute="centerX" id="La9-pk-BGA"/>
-                                            <constraint firstItem="rPb-bo-PLo" firstAttribute="leading" secondItem="Aa4-HO-Ow4" secondAttribute="leading" id="ULy-sf-KiF"/>
-                                            <constraint firstAttribute="bottom" secondItem="rPb-bo-PLo" secondAttribute="bottom" id="Wqm-AY-Oqb"/>
-                                            <constraint firstItem="rPb-bo-PLo" firstAttribute="top" secondItem="Aa4-HO-Ow4" secondAttribute="top" id="ZMP-yN-khM"/>
-                                            <constraint firstAttribute="trailing" secondItem="rPb-bo-PLo" secondAttribute="trailing" id="mUn-Ye-qJ6"/>
+                                            <constraint firstAttribute="bottom" secondItem="rPb-bo-PLo" secondAttribute="bottom" id="qjQ-LI-Rui"/>
+                                            <constraint firstItem="rPb-bo-PLo" firstAttribute="leading" secondItem="Aa4-HO-Ow4" secondAttribute="leading" id="sOl-h1-8VX"/>
                                         </constraints>
                                         <size key="customSize" width="100" height="100"/>
                                         <connections>
