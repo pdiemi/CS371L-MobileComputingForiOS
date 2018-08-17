@@ -42,7 +42,6 @@ class DisplayImageViewController: UIViewController, UINavigationControllerDelega
     @IBAction func buttonSavePressed(_ sender: Any) {
         saveConfirm = true
         delegate?.saveImage(saveConfirm)
-        print("I'm also here")
         _ = navigationController?.popViewController(animated: true)
     }
     

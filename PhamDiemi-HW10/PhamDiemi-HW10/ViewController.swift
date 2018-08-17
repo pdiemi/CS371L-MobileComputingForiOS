@@ -24,7 +24,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                      "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
                      "21", "22", "23", "24", "25", "26", "27", "28"]
     
+    var newImageData: [UIImage] = []
+    
     var imageCounter: Int = 0
+    var newImageCounter: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.delegate = self
         
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,11 +47,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //
     func saveImage(_ saveConfirm: Bool) {
         if saveConfirm {
-            print(saveConfirm)
-            let cell = ImageCell()
-            cell.image?.image = image
-            collectionView.addSubview(cell)
-            print("I'm here")
+            newImageData.insert(image, at: 0)
             collectionView.reloadData()
         }
     }
@@ -60,17 +58,41 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         // Be sure to cast the following to your custom Cell class using “as!”
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdentifier", for: indexPath) as! ImageCell
-        
-        cell.backgroundColor = UIColor.black
-        let currentImageName = self.imageData[self.imageCounter]
+        /*
+        if imageCounter < self.imageData.count {
+            let currentImageName = self.imageData[self.imageCounter]
+            // reference to my variable "image" in ImageCell.swift
+            cell.image.image = UIImage(named:currentImageName)!
+        }
         self.imageCounter += 1
         if self.imageCounter >= self.imageData.count {
-            self.imageCounter = 0
+            if self.newImageCounter >= self.newImageData.count {
+                self.imageCounter = 0
+                self.newImageCounter = 0
+            } else {
+                cell.image.image = newImageData[newImageCounter]
+                self.newImageCounter += 1
+                return cell
+            }
+        }
+        */
+        if self.newImageCounter >= self.newImageData.count {
+            if imageCounter < self.imageData.count {
+                let currentImageName = self.imageData[self.imageCounter]
+                // reference to my variable "image" in ImageCell.swift
+                cell.image.image = UIImage(named:currentImageName)!
+                self.imageCounter += 1
+                return cell
+            } else {
+                self.imageCounter = 0
+                self.newImageCounter = 0
+            }
+        } else {
+            cell.image.image = newImageData[newImageCounter]
+            self.newImageCounter += 1
+            return cell
         }
         
-        // reference to my variable "image" in ImageCell.swift
-        cell.image.image = UIImage(named:currentImageName)!
-    
         return cell
         
     }
@@ -82,25 +104,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)
         -> Int {
             
-            return self.imageData.count
+            return self.imageData.count + self.newImageData.count
     }
     
     //
-    // Set the size of the collectionViewCell so that
-    // there are NUMBER_IMAGES_PER_ROW images per row.
-    // For this HW, NUMBER_IMAGES_PER_ROW = 3
+    // Prepare for segue
     //
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = collectionView.bounds.width/NUMBER_IMAGES_PER_ROW
-        let cellHeight = cellWidth
-        
-        return CGSize(width: cellWidth, height: cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "displayImageSegue" {
             let destination = segue.destination as? DisplayImageViewController
@@ -211,6 +220,30 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // dismiss the popover
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    //
+    // Set the size of the collectionViewCell so that
+    // there are NUMBER_IMAGES_PER_ROW images per row.
+    // For this HW, NUMBER_IMAGES_PER_ROW = 3
+    //
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = collectionView.bounds.width/NUMBER_IMAGES_PER_ROW
+        let cellHeight = cellWidth
+        
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
 }
