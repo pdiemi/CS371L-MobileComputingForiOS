@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Collections-->
+        <!--My Collection-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PhamDiemi_HW10" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="My Collection" customClass="ViewController" customModule="PhamDiemi_HW10" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,8 +68,16 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="My Collections" id="9Ab-OV-Sro">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="qpa-i4-TmS"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="BVf-u5-u8d"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="qpa-i4-TmS" userLabel="buttonOrganize">
+                            <connections>
+                                <action selector="buttonOrganizePressed:" destination="BYZ-38-t0r" id="tUG-Hf-oQE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="BVf-u5-u8d" userLabel="buttonCamera">
+                            <connections>
+                                <action selector="buttonCameraPressed:" destination="BYZ-38-t0r" id="ona-0L-mkg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="tkA-Ya-qrs" id="kVl-nE-qPa"/>
@@ -88,16 +96,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4e8-z6-OQA">
-                                <rect key="frame" x="16" y="64" width="343" height="583"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4e8-z6-OQA" firstAttribute="leading" secondItem="gD2-TV-gyc" secondAttribute="leading" constant="16" id="2v1-ET-Ibn"/>
+                            <constraint firstItem="4e8-z6-OQA" firstAttribute="leading" secondItem="gD2-TV-gyc" secondAttribute="leading" id="2v1-ET-Ibn"/>
                             <constraint firstItem="4e8-z6-OQA" firstAttribute="centerX" secondItem="zpi-KE-tCH" secondAttribute="centerX" id="W6l-oA-m0t"/>
-                            <constraint firstItem="gD2-TV-gyc" firstAttribute="trailing" secondItem="4e8-z6-OQA" secondAttribute="trailing" constant="16" id="Wpv-cF-lQo"/>
+                            <constraint firstItem="gD2-TV-gyc" firstAttribute="trailing" secondItem="4e8-z6-OQA" secondAttribute="trailing" id="Wpv-cF-lQo"/>
                             <constraint firstItem="4e8-z6-OQA" firstAttribute="top" secondItem="gD2-TV-gyc" secondAttribute="top" id="uT0-BN-llW"/>
-                            <constraint firstItem="gD2-TV-gyc" firstAttribute="bottom" secondItem="4e8-z6-OQA" secondAttribute="bottom" constant="20" id="xsI-mu-WKi"/>
+                            <constraint firstItem="gD2-TV-gyc" firstAttribute="bottom" secondItem="4e8-z6-OQA" secondAttribute="bottom" id="xsI-mu-WKi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gD2-TV-gyc"/>
                     </view>
