@@ -8,16 +8,30 @@
 
 import UIKit
 
-class DisplayImageViewController: UIViewController {
+protocol SaveImageDelegate {
+    func saveImage(_ saveConfirm: Bool)
+}
 
+class DisplayImageViewController: UIViewController, UINavigationControllerDelegate {
+
+    @IBOutlet weak var buttonSave: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
-    var image: UIImage!
+    var image: UIImage?
+    var isFromPicker: Bool = false
+    var delegate: SaveImageDelegate?
+    var saveConfirm: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         imageView.image = image
+        if isFromPicker {
+            self.navigationController?.isToolbarHidden = false
+            self.buttonSave.isEnabled = true
+        } else {
+            self.navigationController?.isToolbarHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +39,14 @@ class DisplayImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func buttonSavePressed(_ sender: Any) {
+        saveConfirm = true
+        delegate?.saveImage(saveConfirm)
+        print("I'm also here")
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

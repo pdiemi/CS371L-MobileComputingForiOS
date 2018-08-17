@@ -11,7 +11,7 @@ import AVFoundation
 
 let NUMBER_IMAGES_PER_ROW: CGFloat = 3
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SaveImageDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     //var takenImage: UIImageView = UIImageView()
@@ -32,18 +32,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        
-        
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //
+    // Protocol stub for SaveImageDelegate
+    //
+    func saveImage(_ saveConfirm: Bool) {
+        if saveConfirm {
+            print(saveConfirm)
+            let cell = ImageCell()
+            cell.image?.image = image
+            collectionView.addSubview(cell)
+            print("I'm here")
+            collectionView.reloadData()
+        }
+    }
+    
 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,13 +104,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "displayImageSegue" {
             let destination = segue.destination as? DisplayImageViewController
+            destination?.delegate = self
             if isFromPicker {
                 destination?.image = image
+                destination?.isFromPicker = true
             } else {
                 if let cell = sender as? ImageCell {
                     destination?.image = cell.image.image
                 }
             }
+            isFromPicker = false
         }
     }
     
@@ -115,7 +128,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         picker.sourceType = .photoLibrary;
         
         // present the picker in a full screen popover
-        picker.modalPresentationStyle = .fullScreen
+        //picker.modalPresentationStyle = .fullScreen
         
         present(picker, animated: true, completion: nil)
     }
